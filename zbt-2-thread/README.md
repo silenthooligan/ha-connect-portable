@@ -1,4 +1,4 @@
-# Home Assistant Connect ZBT-2 — Portable Thread / OTBR (community)
+# Home Assistant Connect ZBT-2: Portable Thread / OTBR (community)
 
 Custom WiFi-portable firmware for the ZBT-2 ESP32-S3 USB controller in
 Thread Border Router role. The EFR32MG24 runs **OpenThread RCP**
@@ -7,7 +7,7 @@ ESPHome with [`oxan/esphome-stream-server`](https://github.com/oxan/esphome-stre
 which exposes the EFR32 UART as raw TCP on port 6638.
 
 Why raw TCP instead of ESPHome's `serial_proxy` (which is what the
-Zigbee role uses)? **Mainline OTBR has no `esphome://` driver** — its
+Zigbee role uses)? **Mainline OTBR has no `esphome://` driver**; its
 RADIO_URL parser only speaks `spinel+hdlc+uart://`. Raw TCP is the
 universal lowest-common-denominator that any TCP-aware tool can bridge
 into a pty.
@@ -19,7 +19,7 @@ into a pty.
 pipx install esphome esptool universal-silabs-flasher
 pipx inject esptool pyserial
 
-# 1. Plug ZBT-2 into your machine via USB-C — and BEFORE the ESPHome flash,
+# 1. Plug ZBT-2 into your machine via USB-C, and BEFORE the ESPHome flash,
 #    re-flash the EFR32 with OpenThread RCP firmware:
 wget https://github.com/NabuCasa/silabs-firmware-builder/releases/download/v2026.02.23/zbt2_openthread_rcp_2.7.2.0_GitHub-fb0446f53_gsdk_2025.6.2.gbl
 universal-silabs-flasher \
@@ -129,7 +129,7 @@ netif.cpp:2054: No such file or directory` and exits with code 5.
    ```
 
 3. **Existing Thread / Matter devices keep working** through the new BR
-   automatically — no re-commissioning needed. Multi-OTBR is the design
+   automatically; no re-commissioning needed. Multi-OTBR is the design
    intent of Thread; any other Border Routers on your LAN become
    redundant secondary routers on the same mesh.
 

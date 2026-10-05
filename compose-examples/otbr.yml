@@ -1,6 +1,6 @@
 # OpenThread Border Router pointed at a WiFi-portable ZBT-2 in Thread role.
 #
-# Uses ownbee/hass-otbr-docker (community OTBR for HA Container — bundles a
+# Uses ownbee/hass-otbr-docker (community OTBR for HA Container, bundles a
 # socat-otbr-tcp service that bridges NETWORK_DEVICE=<host>:<port> into a
 # local pty for otbr-agent to read as spinel+hdlc+uart://).
 #
@@ -16,7 +16,7 @@ services:
     container_name: otbr
     restart: unless-stopped
 
-    # IPv6 routing + tun/tap (for wpan0) — both require elevated privileges
+    # IPv6 routing + tun/tap (for wpan0); both require elevated privileges
     privileged: true
     network_mode: host  # mDNS / SRP multicast on the infra side
 

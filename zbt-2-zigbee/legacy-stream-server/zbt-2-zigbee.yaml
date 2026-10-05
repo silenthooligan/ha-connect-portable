@@ -1,5 +1,5 @@
-# Home Assistant Connect ZBT-2 — Portable Zigbee firmware (community)
-# https://github.com/silenthooligan/code-sharing/tree/main/ha-connect-portable
+# Home Assistant Connect ZBT-2: Portable Zigbee firmware (community)
+# https://github.com/silenthooligan/ha-connect-portable
 #
 # This puts the ZBT-2 onto your Wi-Fi network so it can serve Zigbee from
 # anywhere instead of being USB-tethered to your Home Assistant host. It's
@@ -26,7 +26,7 @@
 # WHY stream_server (raw TCP) INSTEAD OF serial_proxy (encrypted ESPHome
 # native API): HA's ZHA manual config flow only accepts /dev/tty* or
 # socket:// host:port. The HA-ESPHome-serial_proxy → ZHA discovery glue
-# isn't auto-firing in HA 2026.4.x — submitting `socket://<ip>:6638`
+# isn't auto-firing in HA 2026.4.x; submitting `socket://<ip>:6638`
 # rejects with `cannot_connect` against serial_proxy because the
 # encrypted native API doesn't speak raw TCP. stream_server exposes the
 # UART as raw TCP on :6638 directly, which ZHA accepts via the standard
@@ -75,7 +75,7 @@ mdns:
         protocol: "ezsp"
         radio: "zigbee_ncp"
 
-# api: enabled (no encryption — keeps it compatible if HA's ESPHome
+# api: enabled (no encryption; keeps it compatible if HA's ESPHome
 # integration wants to pick up diagnostic sensors. ZHA talks to the radio
 # via stream_server below, not the native API.)
 api:

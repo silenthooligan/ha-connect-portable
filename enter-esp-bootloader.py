@@ -3,8 +3,8 @@
 
 The stock Nabu Casa USB-CDC bridge firmware (NabuCasa/zwave-esp-bridge,
 including branch puddly/zbt2-final for the ZBT-2) listens for a "magic
-baudrate sequence" — three USB CDC SET_LINE_CODING transitions in a row
-at specific baud rates — and then drops into a `cmd>` prompt. Sending
+baudrate sequence" (three USB CDC SET_LINE_CODING transitions in a row
+at specific baud rates) and then drops into a `cmd>` prompt. Sending
 the two ASCII bytes "BE" reboots the ESP32-S3 into ROM bootloader mode
 where esptool can flash it.
 
@@ -95,7 +95,7 @@ def try_variant(device: str, label: str, bauds: list[int]) -> bool:
         s.close()
         return False
 
-    print(f"[{label}] cmd> prompt seen — sending BE")
+    print(f"[{label}] cmd> prompt seen, sending BE")
     s.write(b"BE")
     s.flush()
     time.sleep(0.3)

@@ -429,4 +429,4 @@ This work builds on a stack of upstream contributions:
 
 ## License
 
-[MIT](../LICENSE), same as the rest of this code-sharing repository.
+[MIT](LICENSE)

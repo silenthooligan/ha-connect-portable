@@ -1,5 +1,5 @@
-# Home Assistant Connect ZWA-2 — Portable Z-Wave firmware (community variant)
-# https://github.com/silenthooligan/code-sharing/tree/main/ha-connect-portable
+# Home Assistant Connect ZWA-2: Portable Z-Wave firmware (community variant)
+# https://github.com/silenthooligan/ha-connect-portable
 #
 # Structurally identical to the official upstream
 #   https://github.com/esphome/zwa-2
@@ -15,7 +15,7 @@
 #   2. Custom name (`zwa-2-portable`) so multiple instances on the same
 #      LAN don't collide. Set `name_add_mac_suffix: true` for that.
 #
-# Otherwise this is the upstream ESPHome firmware verbatim — same UART
+# Otherwise this is the upstream ESPHome firmware verbatim: same UART
 # pins, same `zwave_proxy` component, same Bluetooth proxy + tracker
 # (which, as a nice side effect, gives HA a Bluetooth radio for Matter
 # device commissioning if your HA host doesn't have one of its own).
@@ -25,7 +25,7 @@
 #   ESP32-S3 GPIO 13  ←  ZG23 TX
 #
 # Pair with Home Assistant's Z-Wave JS integration:
-#   1. Run zwave-js-server (kpine image) — see compose-examples/zwave-js-server.yml
+#   1. Run zwave-js-server (kpine image), see compose-examples/zwave-js-server.yml
 #   2. Add HA `zwave_js` integration → URL `ws://<your-HA-host>:3000`
 #
 # OR connect directly via esphome:// if you're using HA OS (no separate server):
@@ -68,7 +68,7 @@ mdns:
       txt:
         protocol: "esphome"
 
-# DELIBERATELY NO `encryption:` block — see file header.
+# DELIBERATELY NO `encryption:` block; see file header.
 api:
 
 logger:
@@ -87,7 +87,7 @@ uart:
 zwave_proxy:
   id: zw_proxy
 
-# Bluetooth proxy + scanner — bonus feature of the ZWA-2 ESP32-S3.
+# Bluetooth proxy + scanner: bonus feature of the ZWA-2 ESP32-S3.
 # Useful if your HA host has no Bluetooth radio (e.g. HA in a Proxmox LXC
 # without USB BT passthrough): this dongle becomes a BT proxy for Matter
 # device commissioning. Toggle on/off via the switch entity below.

@@ -21,7 +21,7 @@ services:
     # esphome:// URLs aren't. The `server` subcommand bypasses that check and
     # passes its args straight to zwave-server.
     #
-    # Set to your dongle's IP — Alpine/musl has no mDNS resolver, so use the
+    # Set to your dongle's IP; Alpine/musl has no mDNS resolver, so use the
     # IP, not <hostname>.local. Pin it via your DHCP server.
     command: [
       "server",
@@ -31,7 +31,7 @@ services:
     ]
 
     environment:
-      # CRITICAL — ZWA-2 ships set to RFRegion 11 ("USA Long Range End Device")
+      # CRITICAL: ZWA-2 ships set to RFRegion 11 ("USA Long Range End Device")
       # which makes it act as an end device and refuse to run inclusion. Symptom:
       # all 4 channels show -103 dBm noise floor with no devices visible during
       # add_node. Override per your locale:

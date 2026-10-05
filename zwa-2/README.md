@@ -1,10 +1,10 @@
-# Home Assistant Connect ZWA-2 — Portable (community variant)
+# Home Assistant Connect ZWA-2: Portable (community variant)
 
 A drop-in alternative to the official [`esphome/zwa-2`](https://github.com/esphome/zwa-2)
 firmware with two production-tested deviations baked in:
 
 1. **No ESPHome native-API encryption.** Z-Wave JS server doesn't speak the
-   noise protocol — connections fail with `read ECONNRESET` if encryption is
+   noise protocol; connections fail with `read ECONNRESET` if encryption is
    enabled. Mitigate via firewall isolation on the dongle's VLAN.
 2. **`name_add_mac_suffix: true`** so multiple instances coexist on the same LAN.
 
@@ -44,7 +44,7 @@ mDNS as `zwa-2-portable-<mac-suffix>.local`. Subsequent updates go OTA.
 
 ## Sidecar: `zwave-js-server`
 
-HA Container doesn't ship a Z-Wave JS Server — it's a separate process.
+HA Container doesn't ship a Z-Wave JS Server; it's a separate process.
 The kpine image is the standard:
 
 ```yaml
@@ -58,7 +58,7 @@ zwave-js-server:
   command: ["server", "esphome://YOUR_ZWA2_IP",
             "--config", "options.js", "--disable-dns-sd"]
   environment:
-    # CRITICAL — ZWA-2 ships set to RFRegion 11 ("USA Long Range End Device")
+    # CRITICAL: ZWA-2 ships set to RFRegion 11 ("USA Long Range End Device")
     # which makes it act as an end device and refuse to run inclusion. Override:
     - RF_REGION=USA (Long Range)   # or "Europe", "ANZ", etc.
     - S0_LEGACY_KEY=...             # generate: openssl rand -hex 16 | tr a-f A-F
@@ -86,7 +86,7 @@ for HA + matter-server + zwave-js-server + OTBR all together.
    *Manually enter your settings* → server URL `ws://localhost:3000`
    (assumes zwave-js-server is on the HA host; adjust for remote).
 
-3. **Inclusion** — add a Z-Wave device from the Z-Wave JS integration UI
+3. **Inclusion**: add a Z-Wave device from the Z-Wave JS integration UI
    or via the WebSocket API. For S2 devices that don't need PIN entry,
    `inclusion_strategy=2` (Insecure) is the smoothest path; for S2
    Authenticated you'll need to wire up the `grant_security_classes` +
@@ -96,7 +96,7 @@ for HA + matter-server + zwave-js-server + OTBR all together.
 
 ESPHome's native API supports an optional noise-protocol-pre-shared-key
 (noise_psk) layer. ZHA and zwave-js's `esphome://` driver have native
-support for negotiating that PSK. **Z-Wave JS does NOT** — issue
+support for negotiating that PSK. **Z-Wave JS does NOT**; issue
 [home-assistant/addons#4195](https://github.com/home-assistant/addons/issues/4195)
 tracks this. Symptoms when encryption is enabled:
 
@@ -138,4 +138,4 @@ UART runs at **115,200 baud, 8N1** (different from the ZBT-2's 460,800).
 
 The Z-Wave radio firmware on the EFR32ZG23 ships from Nabu Casa correctly
 preinstalled. Unlike the ZBT-2, you do **not** need `universal-silabs-flasher`
-to swap the radio firmware — the ESP32-S3 firmware swap is the only step.
+to swap the radio firmware; the ESP32-S3 firmware swap is the only step.

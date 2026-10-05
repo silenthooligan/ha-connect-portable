@@ -1,6 +1,6 @@
 # Full-stack reference: Home Assistant Container + matter-server +
 # zwave-js-server (ZWA-2) + OTBR (ZBT-2 Thread). The ZBT-2 Zigbee role
-# needs no sidecar — ZHA talks to it directly via the ESPHome integration.
+# needs no sidecar; ZHA talks to it directly via the ESPHome integration.
 #
 # Assumptions:
 #   - You've flashed all three Nabu Casa dongles with the firmwares from

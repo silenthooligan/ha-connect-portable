@@ -1,8 +1,8 @@
-# Home Assistant Connect ZBT-2 — Portable Thread / OTBR firmware (community)
-# https://github.com/silenthooligan/code-sharing/tree/main/ha-connect-portable
+# Home Assistant Connect ZBT-2: Portable Thread / OTBR firmware (community)
+# https://github.com/silenthooligan/ha-connect-portable
 #
 # Hardware-identical to home-assistant-zbt-2-zigbee.yaml. The differences
-# matter, though — the ZBT-2 Thread role uses oxan/esphome-stream-server
+# matter, though: the ZBT-2 Thread role uses oxan/esphome-stream-server
 # (raw TCP on port 6638) instead of ESPHome's `serial_proxy`. The official
 # OpenThread Border Router image expects spinel+hdlc+uart over a real UART;
 # it doesn't speak ESPHome's encrypted native API. Raw TCP can be bridged
@@ -11,7 +11,7 @@
 #
 # Companion stack on the HA host:
 #
-#   ownbee/hass-otbr-docker  — runs otbr-agent + socat-otbr-tcp + REST API
+#   ownbee/hass-otbr-docker: runs otbr-agent + socat-otbr-tcp + REST API
 #     env:
 #       - NETWORK_DEVICE=<this-dongle-ip>:6638
 #       - DEVICE=/tmp/ttyOTBR        # ownbee's socat creates this
@@ -48,7 +48,7 @@ psram:
   mode: octal
   speed: 80MHz
 
-# oxan/esphome-stream-server — exposes UART as raw TCP for OTBR
+# oxan/esphome-stream-server: exposes UART as raw TCP for OTBR
 external_components:
   - source: github://oxan/esphome-stream-server@master
     components: [stream_server]
@@ -71,7 +71,7 @@ mdns:
         protocol: "spinel"
         radio: "openthread_rcp"
 
-# api: stays enabled (no encryption — keeps it compatible if you also want
+# api: stays enabled (no encryption; keeps it compatible if you also want
 # HA's ESPHome integration to discover the dongle for diagnostic sensors).
 api:
 
