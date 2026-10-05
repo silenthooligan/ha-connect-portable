@@ -29,8 +29,9 @@ repository provides the firmware and integration recipes.*
 - **Zigbee (ZBT-2):** Home Assistant 2026.5 or newer for the
   `esphome-hass://` URL handler in
   `homeassistant/components/esphome/serial_proxy.py`. Requires the
-  bellows fix in [zigpy/bellows#720](https://github.com/zigpy/bellows/pull/720)
-  (Python 3.14 + EZSP-over-TCP). For pre-2026.5 / pre-bellows-fix
+  bellows fix from [zigpy/bellows#720](https://github.com/zigpy/bellows/pull/720)
+  (Python 3.14 + EZSP-over-TCP; upstream tracking in
+  [zigpy/bellows#722](https://github.com/zigpy/bellows/issues/722)). For pre-2026.5 / pre-bellows-fix
   systems, use the raw-TCP fallback under
   [`zbt-2-zigbee/legacy-stream-server/`](zbt-2-zigbee/legacy-stream-server/).
 - **Thread (ZBT-2):** OpenThread Border Router image with `socat`
@@ -159,7 +160,7 @@ ESP32-S3 ROM bootloader.
 | Role | Floor |
 |---|---|
 | Z-Wave (ZWA-2) | Z-Wave JS server v15.15.0+ |
-| Zigbee (ZBT-2) | HA 2026.5+ with the bellows patch from [zigpy/bellows#720](https://github.com/zigpy/bellows/pull/720); legacy fallback available |
+| Zigbee (ZBT-2) | HA 2026.5+ with the bellows patch from [zigpy/bellows#720](https://github.com/zigpy/bellows/pull/720) (upstream: [#722](https://github.com/zigpy/bellows/issues/722)); legacy fallback available |
 | Thread (ZBT-2) | OTBR image with `socat` RADIO_URL bridging (e.g. ownbee/hass-otbr-docker) |
 
 ### Compose stack

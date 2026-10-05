@@ -37,14 +37,17 @@ Two upstream gates determine whether this works on a stock HA install:
    breaks on the Python 3.14 + EZSP-over-TCP combo with symptoms like
    `'NoneType' object can't be awaited`, `Attempted to use a closed event
    loop`, dropped reset frames during NCP startup, and indefinite ZHA
-   retry loops. Tracked at [zigpy/bellows#720](https://github.com/zigpy/bellows/pull/720).
-   Until that merges and reaches a HA release, vendor the patched bellows
-   into your HA image:
+   retry loops. The fix was in [zigpy/bellows#720](https://github.com/zigpy/bellows/pull/720),
+   which closed without merging; upstream tracking is
+   [zigpy/bellows#722](https://github.com/zigpy/bellows/issues/722). Until a
+   bellows release fixes it and HA ships that release, vendor the #720 patch
+   into your HA image. The patch is based on bellows 0.49.1, so check it
+   against the bellows version your HA tag ships:
    ```dockerfile
    ARG HA_TAG=2026.5.0b2
    FROM ghcr.io/home-assistant/home-assistant:${HA_TAG}
    RUN pip install --no-deps --force-reinstall \
-       https://github.com/silenthooligan/bellows/archive/refs/heads/fix/python-3.14-ezsp-tcp.tar.gz
+       https://github.com/zigpy/bellows/archive/384975d9b81793b3f310086550fedc98f3ebc1ec.tar.gz
    ```
 
 If you're on HA <= 2026.4 (no `esphome-hass://`), use the

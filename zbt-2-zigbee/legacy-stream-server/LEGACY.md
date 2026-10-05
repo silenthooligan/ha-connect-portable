@@ -15,9 +15,10 @@ this legacy variant only if one of the following applies:
   serial_proxy stream.
 - **You haven't applied the bellows Python 3.14 / EZSP-over-TCP fixes.**
   Stock `bellows==0.49.1` (the one HA 2026.5.0b2 ships) breaks before
-  EZSP startup completes in either transport. Track upstream merge:
-  [zigpy/bellows#720](https://github.com/zigpy/bellows/pull/720). Until
-  it lands you'd need to vendor the patched bellows into your HA image
+  EZSP startup completes in either transport. Upstream tracking:
+  [zigpy/bellows#722](https://github.com/zigpy/bellows/issues/722) (the
+  [#720](https://github.com/zigpy/bellows/pull/720) patch closed without
+  merging). Until it is fixed you'd need to vendor the patched bellows into your HA image
   for either transport to work, but `serial_proxy` is more sensitive
   (the EOF-during-handshake fix is what keeps the encrypted noise tunnel
   alive across init).
